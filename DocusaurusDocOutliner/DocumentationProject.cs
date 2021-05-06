@@ -1,13 +1,15 @@
-﻿namespace DocusaurusDocOutliner
+﻿using System.Collections.Generic;
+
+namespace DocusaurusDocOutliner
 {
     public class DocumentationProject
     {
-        public string Title { get; set; }
-        public DocumentationSidebar[] Sidebars { get;  set; }
+        public string Title { get; internal set; }
+        public List<DocumentationSidebar> Sidebars { get;  set; }
 
         public DocumentationProject()
         {
-            Sidebars = new DocumentationSidebar[] { };
+            Sidebars = new List<DocumentationSidebar>();
         }
     }
 }

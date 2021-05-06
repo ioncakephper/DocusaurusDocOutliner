@@ -1,13 +1,15 @@
-﻿namespace DocusaurusDocOutliner
+﻿using System.Collections.Generic;
+
+namespace DocusaurusDocOutliner
 {
     public class DocumentationTopic
     {
-        public DocumentationTopic[] Topics { get; set; }
-        public string Title { get; internal set; }
+        public string Title { get;  set; }
+        public List<DocumentationTopic> Topics { get;  set; }
 
         public DocumentationTopic()
         {
-            Topics = new DocumentationTopic[] { };
+            Topics = new List<DocumentationTopic>();
         }
     }
 }

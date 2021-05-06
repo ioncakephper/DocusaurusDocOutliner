@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,26 +83,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.projectContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.newSidebarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webliditySearchTextBox1 = new DocusaurusDocOutlinerControlLibrary.WebliditySearchTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.sidebarContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.newTopicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addTopicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.propertiesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.topicContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.newTopicToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -113,10 +95,7 @@
             this.splitContainer1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.projectContextMenuStrip.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.sidebarContextMenuStrip.SuspendLayout();
-            this.topicContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -594,34 +573,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // projectContextMenuStrip
-            // 
-            this.projectContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.projectContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newSidebarToolStripMenuItem,
-            this.buildToolStripMenuItem,
-            this.propertiesToolStripMenuItem});
-            this.projectContextMenuStrip.Name = "projectContextMenuStrip";
-            this.projectContextMenuStrip.Size = new System.Drawing.Size(162, 76);
-            // 
-            // newSidebarToolStripMenuItem
-            // 
-            this.newSidebarToolStripMenuItem.Name = "newSidebarToolStripMenuItem";
-            this.newSidebarToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
-            this.newSidebarToolStripMenuItem.Text = "New sidebar";
-            // 
-            // buildToolStripMenuItem
-            // 
-            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
-            this.buildToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
-            this.buildToolStripMenuItem.Text = "Build";
-            // 
-            // propertiesToolStripMenuItem
-            // 
-            this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
-            this.propertiesToolStripMenuItem.Text = "Properties...";
-            // 
             // webliditySearchTextBox1
             // 
             this.webliditySearchTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -651,97 +602,6 @@
             this.treeView1.Size = new System.Drawing.Size(262, 333);
             this.treeView1.TabIndex = 1;
             // 
-            // sidebarContextMenuStrip
-            // 
-            this.sidebarContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.sidebarContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newTopicToolStripMenuItem,
-            this.addTopicToolStripMenuItem,
-            this.toolStripSeparator9,
-            this.cutToolStripMenuItem1,
-            this.copyToolStripMenuItem1,
-            this.pasteToolStripMenuItem1,
-            this.removeToolStripMenuItem,
-            this.toolStripSeparator10,
-            this.renameToolStripMenuItem,
-            this.propertiesToolStripMenuItem1});
-            this.sidebarContextMenuStrip.Name = "sidebarContextMenuStrip";
-            this.sidebarContextMenuStrip.Size = new System.Drawing.Size(155, 208);
-            // 
-            // newTopicToolStripMenuItem
-            // 
-            this.newTopicToolStripMenuItem.Name = "newTopicToolStripMenuItem";
-            this.newTopicToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
-            this.newTopicToolStripMenuItem.Text = "New topic";
-            this.newTopicToolStripMenuItem.Click += new System.EventHandler(this.newTopicToolStripMenuItem_Click);
-            // 
-            // addTopicToolStripMenuItem
-            // 
-            this.addTopicToolStripMenuItem.Name = "addTopicToolStripMenuItem";
-            this.addTopicToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
-            this.addTopicToolStripMenuItem.Text = "Add topic...";
-            // 
-            // cutToolStripMenuItem1
-            // 
-            this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(154, 24);
-            this.cutToolStripMenuItem1.Text = "Cut";
-            // 
-            // copyToolStripMenuItem1
-            // 
-            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(154, 24);
-            this.copyToolStripMenuItem1.Text = "Copy";
-            // 
-            // pasteToolStripMenuItem1
-            // 
-            this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
-            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(154, 24);
-            this.pasteToolStripMenuItem1.Text = "Paste";
-            // 
-            // removeToolStripMenuItem
-            // 
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
-            this.removeToolStripMenuItem.Text = "Remove";
-            // 
-            // renameToolStripMenuItem
-            // 
-            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
-            this.renameToolStripMenuItem.Text = "Rename";
-            // 
-            // propertiesToolStripMenuItem1
-            // 
-            this.propertiesToolStripMenuItem1.Name = "propertiesToolStripMenuItem1";
-            this.propertiesToolStripMenuItem1.Size = new System.Drawing.Size(154, 24);
-            this.propertiesToolStripMenuItem1.Text = "Properties...";
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(151, 6);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(151, 6);
-            // 
-            // topicContextMenuStrip
-            // 
-            this.topicContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.topicContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newTopicToolStripMenuItem1});
-            this.topicContextMenuStrip.Name = "topicContextMenuStrip";
-            this.topicContextMenuStrip.Size = new System.Drawing.Size(211, 56);
-            // 
-            // newTopicToolStripMenuItem1
-            // 
-            this.newTopicToolStripMenuItem1.Name = "newTopicToolStripMenuItem1";
-            this.newTopicToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
-            this.newTopicToolStripMenuItem1.Text = "New topic";
-            this.newTopicToolStripMenuItem1.Click += new System.EventHandler(this.newTopicToolStripMenuItem1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -766,10 +626,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.projectContextMenuStrip.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.sidebarContextMenuStrip.ResumeLayout(false);
-            this.topicContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -831,26 +688,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ContextMenuStrip projectContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem newSidebarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem buildToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TreeView treeView1;
         private DocusaurusDocOutlinerControlLibrary.WebliditySearchTextBox webliditySearchTextBox1;
-        private System.Windows.Forms.ContextMenuStrip sidebarContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem newTopicToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addTopicToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem1;
-        private System.Windows.Forms.ContextMenuStrip topicContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem newTopicToolStripMenuItem1;
     }
 }
 
