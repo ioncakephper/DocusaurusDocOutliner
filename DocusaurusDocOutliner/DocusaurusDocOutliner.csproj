@@ -52,6 +52,9 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocumentationProject.cs" />
+    <Compile Include="DocumentationSidebar.cs" />
+    <Compile Include="DocumentationTopic.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
