@@ -13,6 +13,12 @@ namespace DocusaurusDocOutliner
             UpdateChildrenNodes(source.Sidebars);
         }
 
+        public void AddSidebarToProject(SidebarTreeNode sidebarNode)
+        {
+            DocumentationSidebar sb = ((DocumentationSidebar)sidebarNode.Tag);
+            ((DocumentationProject)Tag).Sidebars.Add(sb);
+        }
+
         private void UpdateChildrenNodes(List<DocumentationSidebar> sidebars)
         {
             if (sidebars == null)

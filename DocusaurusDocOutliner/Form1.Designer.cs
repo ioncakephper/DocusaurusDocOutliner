@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,13 +80,15 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.webliditySearchTextBox1 = new DocusaurusDocOutlinerControlLibrary.WebliditySearchTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.webliditySearchTextBox1 = new DocusaurusDocOutlinerControlLibrary.WebliditySearchTextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.projectContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newSidebarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -93,9 +96,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.projectContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -531,6 +535,35 @@
             this.splitContainer1.SplitterDistance = 262;
             this.splitContainer1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.treeView1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 22);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.panel2.Size = new System.Drawing.Size(262, 339);
+            this.panel2.TabIndex = 1;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.LabelEdit = true;
+            this.treeView1.Location = new System.Drawing.Point(0, 6);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(262, 333);
+            this.treeView1.TabIndex = 1;
+            // 
+            // webliditySearchTextBox1
+            // 
+            this.webliditySearchTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.webliditySearchTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.webliditySearchTextBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.webliditySearchTextBox1.Name = "webliditySearchTextBox1";
+            this.webliditySearchTextBox1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.webliditySearchTextBox1.Size = new System.Drawing.Size(262, 22);
+            this.webliditySearchTextBox1.TabIndex = 0;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.tabControl1);
@@ -573,34 +606,20 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // webliditySearchTextBox1
+            // projectContextMenuStrip
             // 
-            this.webliditySearchTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.webliditySearchTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.webliditySearchTextBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.webliditySearchTextBox1.Name = "webliditySearchTextBox1";
-            this.webliditySearchTextBox1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.webliditySearchTextBox1.Size = new System.Drawing.Size(262, 22);
-            this.webliditySearchTextBox1.TabIndex = 0;
+            this.projectContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.projectContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newSidebarToolStripMenuItem});
+            this.projectContextMenuStrip.Name = "projectContextMenuStrip";
+            this.projectContextMenuStrip.Size = new System.Drawing.Size(211, 56);
             // 
-            // panel2
+            // newSidebarToolStripMenuItem
             // 
-            this.panel2.Controls.Add(this.treeView1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 22);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(262, 339);
-            this.panel2.TabIndex = 1;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.LabelEdit = true;
-            this.treeView1.Location = new System.Drawing.Point(0, 6);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(262, 333);
-            this.treeView1.TabIndex = 1;
+            this.newSidebarToolStripMenuItem.Name = "newSidebarToolStripMenuItem";
+            this.newSidebarToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.newSidebarToolStripMenuItem.Text = "New sidebar";
+            this.newSidebarToolStripMenuItem.Click += new System.EventHandler(this.newSidebarToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -624,9 +643,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.projectContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,6 +711,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TreeView treeView1;
         private DocusaurusDocOutlinerControlLibrary.WebliditySearchTextBox webliditySearchTextBox1;
+        private System.Windows.Forms.ContextMenuStrip projectContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem newSidebarToolStripMenuItem;
     }
 }
 

@@ -21,6 +21,8 @@ namespace DocusaurusDocOutliner
         public Form1()
         {
             InitializeComponent();
+            Project = new DocumentationProject();
+            Project.Sidebars.Add(new DocumentationSidebar() { Title = "Docs" });
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,12 +47,16 @@ namespace DocusaurusDocOutliner
         {
             treeView1.Nodes.Clear();
             ProjectTreeNode projectNode = NewProjectNode(Project);
+            treeView1.Nodes.Add(projectNode);
+            treeView1.ExpandAll();
+            treeView1.SelectedNode = projectNode;
         }
 
         private ProjectTreeNode NewProjectNode(DocumentationProject project)
         {
             ProjectTreeNode projectNode = new ProjectTreeNode();
             projectNode.UpdateNodeData(project);
+            projectNode.ContextMenuStrip = projectContextMenuStrip;
 
             return projectNode;
         }
@@ -72,6 +78,31 @@ namespace DocusaurusDocOutliner
             Text = string.Format(@"{0} - {1}", baseName, applicationName);
         }
 
+        private void newSidebarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddSidebarToProject((ProjectTreeNode)treeView1.TopNode, ProjectTreeNode.NewSidebarNode(NewSidebar()));
+        }
+
+        private void AddSidebarToProject(ProjectTreeNode topNode, SidebarTreeNode sidebarTreeNode)
+        {
+            if (topNode == null)
+            {
+                throw new ArgumentNullException(nameof(topNode));
+            }
+
+            if (sidebarTreeNode == null)
+            {
+                throw new ArgumentNullException(nameof(sidebarTreeNode));
+            }
+
+            topNode.AddSidebarToProject(sidebarTreeNode);
+            topNode.Nodes.Add(sidebarTreeNode);
+        }
+
+        private DocumentationSidebar NewSidebar()
+        {
+            return new DocumentationSidebar() { Title = "Sidebar " + _sidebarCount++.ToString() };
+        }
     }
 
 
