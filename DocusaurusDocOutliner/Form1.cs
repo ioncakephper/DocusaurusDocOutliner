@@ -12,58 +12,51 @@ namespace DocusaurusDocOutliner
 {
     public partial class Form1 : Form
     {
-        private int _topicCount;
-        private int _sidebarCount;
+        private string _fileName;
 
-        public string FileName { get; set; }
-        public DocumentationProject Project { get; set; }
+        public event EventHandler<FileNameChangedEventArgs> FileNameChanged;
+
+        public string FileName {
+            get
+            {
+                return _fileName;
+            }
+            set
+            {
+                _fileName = value;
+                OnFileNameChanged(_fileName);
+            }
+        }
+
+        protected void OnFileNameChanged(string fileName)
+        {
+            if (FileNameChanged != null)
+            {
+                FileNameChangedEventArgs e = new FileNameChangedEventArgs() { NewFileName = fileName };
+                FileNameChanged(this, e);
+            }
+        }
 
         public Form1()
         {
             InitializeComponent();
-            Project = new DocumentationProject();
-            Project.Sidebars.Add(new DocumentationSidebar() { Title = "Docs" });
+            FileNameChanged += Form1_FileNameChanged;
+            
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Form1_FileNameChanged(object sender, FileNameChangedEventArgs e)
         {
-            var d = new AboutBox();
-            d.ShowDialog();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            ScatterData();
             UpdateFormText();
         }
 
-        private void ScatterData()
+        public void ScatterData()
         {
-            PopulateTree();
             SetControlsEnabled();
-        }
-
-        private void PopulateTree()
-        {
-            treeView1.Nodes.Clear();
-            ProjectTreeNode projectNode = NewProjectNode(Project);
-            treeView1.Nodes.Add(projectNode);
-            treeView1.ExpandAll();
-            treeView1.SelectedNode = projectNode;
-        }
-
-        private ProjectTreeNode NewProjectNode(DocumentationProject project)
-        {
-            ProjectTreeNode projectNode = new ProjectTreeNode();
-            projectNode.UpdateNodeData(project);
-            projectNode.ContextMenuStrip = projectContextMenuStrip;
-
-            return projectNode;
         }
 
         private void SetControlsEnabled()
         {
-            
+            // throw new NotImplementedException();
         }
 
         private void GatherData()
@@ -73,37 +66,26 @@ namespace DocusaurusDocOutliner
 
         private void UpdateFormText()
         {
-            string baseName = (!string.IsNullOrWhiteSpace(FileName)) ? System.IO.Path.GetFileNameWithoutExtension(FileName) : "Untitled";
-            string applicationName = "Docusaurus Documentation Outliner";
-            Text = string.Format(@"{0} - {1}", baseName, applicationName);
+            string baseName = (!string.IsNullOrWhiteSpace(FileName) ? System.IO.Path.GetFileNameWithoutExtension(FileName) : "Untitled");
+            string appName = "Docusaurus Documentation Project Outliner";
+            Text = string.Format(@"{0} - {1}", baseName, appName);
         }
 
-        private void newSidebarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            AddSidebarToProject((ProjectTreeNode)treeView1.TopNode, ProjectTreeNode.NewSidebarNode(NewSidebar()));
+            ScatterData();
+            weblidityFormCloser1.IsDirty = true;
+            UpdateFormText();
         }
 
-        private void AddSidebarToProject(ProjectTreeNode topNode, SidebarTreeNode sidebarTreeNode)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (topNode == null)
-            {
-                throw new ArgumentNullException(nameof(topNode));
-            }
-
-            if (sidebarTreeNode == null)
-            {
-                throw new ArgumentNullException(nameof(sidebarTreeNode));
-            }
-
-            topNode.AddSidebarToProject(sidebarTreeNode);
-            topNode.Nodes.Add(sidebarTreeNode);
-        }
-
-        private DocumentationSidebar NewSidebar()
-        {
-            return new DocumentationSidebar() { Title = "Sidebar " + _sidebarCount++.ToString() };
+            weblidityFormCloser1.ConfirmFormClosing(sender, e);
         }
     }
 
-
+    public class FileNameChangedEventArgs : EventArgs
+    {
+        public string NewFileName { get; internal set; }
+    }
 }
