@@ -43,6 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeblidityFileOpenSave.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WeblidityFileOpenSave.Designer.cs">
+      <DependentUpon>WeblidityFileOpenSave.cs</DependentUpon>
+    </Compile>
     <Compile Include="WeblidityFormCloser.cs">
       <SubType>Component</SubType>
     </Compile>
