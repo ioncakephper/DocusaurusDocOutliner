@@ -10,6 +10,11 @@ namespace DocusaurusDocOutliner
             Tag = project;
         }
 
+        public ProjectTreeNode(DocumentationProject project, ContextMenuStrip projectContextMenuStrip) : this(project)
+        {
+            ContextMenuStrip = projectContextMenuStrip;
+        }
+
         public DocumentationProject GetProject()
         {
             return (DocumentationProject)Tag;

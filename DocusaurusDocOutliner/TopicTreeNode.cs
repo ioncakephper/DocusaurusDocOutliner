@@ -10,6 +10,11 @@ namespace DocusaurusDocOutliner
             Tag = topic;
         }
 
+        public TopicTreeNode(DocumentationTopic topic, ContextMenuStrip topicContextMenuStrip) : this(topic)
+        {
+            ContextMenuStrip = topicContextMenuStrip;
+        }
+
         public DocumentationTopic GetTopic()
         {
             return (DocumentationTopic)Tag;

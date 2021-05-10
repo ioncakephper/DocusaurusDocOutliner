@@ -10,6 +10,11 @@ namespace DocusaurusDocOutliner
             Tag = sidebar;
         }
 
+        public SidebarTreeNode(DocumentationSidebar sidebar, ContextMenuStrip sidebarContextMenuStrip) : this(sidebar)
+        {
+            ContextMenuStrip = sidebarContextMenuStrip;
+        }
+
         public DocumentationSidebar GetSidebar()
         {
             return (DocumentationSidebar)Tag;
