@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace DocusaurusDocOutliner
 {
@@ -18,6 +19,18 @@ namespace DocusaurusDocOutliner
         public DocumentationProject GetProject()
         {
             return (DocumentationProject)Tag;
+        }
+
+        internal DocumentationProject RetrieveProject()
+        {
+            DocumentationProject p = new DocumentationProject() { Title = Tag.ToString() };
+            foreach (SidebarTreeNode sidebarNode in Nodes)
+            {
+                DocumentationSidebar sidebar = sidebarNode.RetrieveSidebar();
+                p.Sidebars.Add(sidebar);
+            }
+
+            return p;
         }
     }
 }

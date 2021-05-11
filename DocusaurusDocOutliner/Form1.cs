@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -170,5 +171,25 @@ namespace DocusaurusDocOutliner
                 weblidityFileOpenSave1.Save(FileName);
             }
         }
+
+        private void buildToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DocumentationProject p = ((ProjectTreeNode)treeView1.TopNode).RetrieveProject();
+
+            // Generate sidebars.js in Docusaurus website folder
+
+            var sidebarsRuntimeTextTemplate = new SidebarsRuntimeTextTemplate();
+            sidebarsRuntimeTextTemplate.Content = "{// Content goes here}";
+
+            string sidebarsText = sidebarsRuntimeTextTemplate.TransformText();
+            string sidebarsFilename = "sidebars.js";
+
+            File.WriteAllText(sidebarsFilename, sidebarsText);
+        }
+    }
+
+    public partial class SidebarsRuntimeTextTemplate
+    {
+        public string Content { get; set; }
     }
 }

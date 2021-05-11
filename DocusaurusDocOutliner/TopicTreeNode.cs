@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace DocusaurusDocOutliner
 {
@@ -18,6 +19,17 @@ namespace DocusaurusDocOutliner
         public DocumentationTopic GetTopic()
         {
             return (DocumentationTopic)Tag;
+        }
+
+        internal DocumentationTopic RetrieveTopic()
+        {
+            DocumentationTopic t = new DocumentationTopic() { Title = Text };
+            foreach (TopicTreeNode topicNode in Nodes)
+            {
+                DocumentationTopic topic = topicNode.RetrieveTopic();
+                t.Topics.Add(topic);
+            }
+            return t;
         }
     }
 }

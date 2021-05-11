@@ -527,7 +527,7 @@
             this.buildToolStripMenuItem,
             this.propertiesToolStripMenuItem});
             this.projectContextMenuStrip.Name = "projectContextMenuStrip";
-            this.projectContextMenuStrip.Size = new System.Drawing.Size(162, 76);
+            this.projectContextMenuStrip.Size = new System.Drawing.Size(211, 104);
             // 
             // sidebarContextMenuStrip
             // 
@@ -569,8 +569,9 @@
             // buildToolStripMenuItem
             // 
             this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
-            this.buildToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
+            this.buildToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.buildToolStripMenuItem.Text = "Build";
+            this.buildToolStripMenuItem.Click += new System.EventHandler(this.buildToolStripMenuItem_Click);
             // 
             // propertiesToolStripMenuItem
             // 
