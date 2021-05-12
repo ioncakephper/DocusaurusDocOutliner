@@ -8,20 +8,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DocusaurusDocOutlinerControlLibrary;
 
 namespace DocusaurusDocOutliner
 {
     public partial class Form1 : Form
     {
+
+        public event EventHandler<ApplicationFileNameChangedEventArgs> ApplicationFileNameChanged;
+
         private int _sidebarCount;
         private int _topicCount;
 
         public Form1()
         {
             InitializeComponent();
+            ApplicationFileNameChanged += Form1_ApplicationFileNameChanged;
             AdjustSplitterWidth();
             Project = new DocumentationProject();
             Project.Sidebars.Add(new DocumentationSidebar() { Title = "Docs" });
+        }
+
+        private void Form1_ApplicationFileNameChanged(object sender, ApplicationFileNameChangedEventArgs e)
+        {
+            UpdateFormTitle();
         }
 
         private void AdjustSplitterWidth()
@@ -138,7 +148,7 @@ namespace DocusaurusDocOutliner
         {
             projectNode.Nodes.Add(sidebarTreeNode);
             treeView1.SelectedNode = sidebarTreeNode;
-
+            weblidityFormCloser1.IsDirty = true;
         }
 
         private DocumentationSidebar NewSidebar()
@@ -154,14 +164,19 @@ namespace DocusaurusDocOutliner
 
         private void AddTopicIntoSidebar(SidebarTreeNode sidebarNode, TopicTreeNode topicTreeNode)
         {
+            AddTopicIntoParent(sidebarNode, topicTreeNode);
+        }
+
+        private void AddTopicIntoParent(TreeNode sidebarNode, TreeNode topicTreeNode)
+        {
             sidebarNode.Nodes.Add(topicTreeNode);
             treeView1.SelectedNode = topicTreeNode;
+            weblidityFormCloser1.IsDirty = true;
         }
 
         private DocumentationTopic NewTopic()
         {
             return new DocumentationTopic() { Title = "Topic " + _topicCount++.ToString() };
-
         }
 
         private void newTopicToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -172,8 +187,7 @@ namespace DocusaurusDocOutliner
 
         private void AddTopicIntoTopic(TopicTreeNode topicNode, TopicTreeNode topicTreeNode)
         {
-            topicNode.Nodes.Add(topicTreeNode);
-            treeView1.SelectedNode = topicTreeNode;
+            AddTopicIntoParent(topicNode, topicTreeNode);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -192,17 +206,11 @@ namespace DocusaurusDocOutliner
 
         private void buildToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DocumentationProject p = ((ProjectTreeNode)treeView1.TopNode).RetrieveProject();
+            DocumentationProject project = ((ProjectTreeNode)treeView1.TopNode).RetrieveProject();
 
-            // Generate sidebars.js in Docusaurus website folder
-            JsonObject jo = new JsonObject();
-            foreach (var sidebar in p.Sidebars)
-            {
-                jo.Add(Surround(sidebar.Title), SidebarJsonTopics(sidebar.Topics));
-            }
-            
-            var sidebarsRuntimeTextTemplate = new SidebarsRuntimeTextTemplate();
-            sidebarsRuntimeTextTemplate.Content = jo.ToString();
+            // Generate sidebars.js in Docusaurus website folder           
+            var sidebarsRuntimeTextTemplate = new SidebarsRuntimeTextTemplate();           
+            sidebarsRuntimeTextTemplate.Content = ProjectSidebarsAsJson(project);
 
             string sidebarsText = sidebarsRuntimeTextTemplate.TransformText();
             string sidebarsFilename = "sidebars.js";
@@ -212,8 +220,28 @@ namespace DocusaurusDocOutliner
             MessageBox.Show(string.Format(@"Sidebars file created."), "Docusaurus Documentation Project Outliner", MessageBoxButtons.OK);
         }
 
+        private string ProjectSidebarsAsJson(DocumentationProject project)
+        {
+            if (project == null)
+            {
+                return new JsonObject().ToString();
+            }
+
+            JsonObject jo = new JsonObject();
+            foreach (var sidebar in project.Sidebars)
+            {
+                jo.Add(Surround(sidebar.Title), SidebarJsonTopics(sidebar.Topics));
+            }
+            return jo.ToString();
+        }
+
         private string SidebarJsonTopics(List<DocumentationTopic> topics)
         {
+            if (topics == null)
+            {
+                return new JsonArray().ToString();
+            }
+
             JsonArray ja = new JsonArray();
             foreach (var topic in topics)
             {
@@ -254,6 +282,64 @@ namespace DocusaurusDocOutliner
         private string Surround(string encapsulator, string s)
         {
             return string.Format(@"{0}{1}{0}", encapsulator, s);
+        }
+
+        private void buildToolStripButton_Click(object sender, EventArgs e)
+        {
+            buildToolStripMenuItem_Click(sender, e);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var d = new AboutBox1();
+            d.ShowDialog();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var d = new OptionsDialog();
+            d.ShowDialog();
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            var result = weblidityFileOpenSave1.Save(FileName);
+            UpdateApplicationFileName(result);
+        }
+
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveToolStripButton_Click(sender, e);
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = weblidityFileOpenSave1.SaveAs(FileName);
+            UpdateApplicationFileName(result);
+        }
+
+        private void UpdateApplicationFileName(FileOpenSaveResult result)
+        {
+            if (result == DocusaurusDocOutlinerControlLibrary.FileOpenSaveResult.Success)
+            {
+                FileName = weblidityFileOpenSave1.FileName;
+                weblidityFormCloser1.IsDirty = false;
+                OnApplicationFileNameChanged(FileName);
+            }
+        }
+
+        protected void OnApplicationFileNameChanged(string fileName)
+        {
+            if (ApplicationFileNameChanged != null)
+            {
+                ApplicationFileNameChanged(this, new ApplicationFileNameChangedEventArgs() { FileName = fileName });
+            }
+        }
+
+        private void weblidityFileOpenSave1_FileSave(object sender, FileOpenSaveEventArgs e)
+        {
+            e.Result = FileOpenSaveResult.Success;
         }
     }
 
