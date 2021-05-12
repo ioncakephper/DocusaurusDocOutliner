@@ -98,6 +98,24 @@ namespace DocusaurusDocOutliner
         private void SetControlsEnabled()
         {
             // throw new NotImplementedException();
+            SetBuildControlsEnabled();
+            SetMoveTopicsControlsEnabled();
+        }
+
+        private void SetMoveTopicsControlsEnabled()
+        {
+            var buildControlsList = new ControlsToEnableList();
+            // buildControlsList.AddRange(new object[] { buildToolStripButton, buildToolStripMenuItem });
+
+            buildControlsList.SetControlsEnabled();
+        }
+
+        private void SetBuildControlsEnabled()
+        {
+            var buildControlsList = new ControlsToEnableList();
+            buildControlsList.AddRange(new object[] { buildToolStripButton, buildToolStripMenuItem });
+
+            buildControlsList.SetControlsEnabled();
         }
 
         private void GatherData()
@@ -177,14 +195,124 @@ namespace DocusaurusDocOutliner
             DocumentationProject p = ((ProjectTreeNode)treeView1.TopNode).RetrieveProject();
 
             // Generate sidebars.js in Docusaurus website folder
-
+            JsonObject jo = new JsonObject();
+            foreach (var sidebar in p.Sidebars)
+            {
+                jo.Add(Surround(sidebar.Title), SidebarJsonTopics(sidebar.Topics));
+            }
+            
             var sidebarsRuntimeTextTemplate = new SidebarsRuntimeTextTemplate();
-            sidebarsRuntimeTextTemplate.Content = "{// Content goes here}";
+            sidebarsRuntimeTextTemplate.Content = jo.ToString();
 
             string sidebarsText = sidebarsRuntimeTextTemplate.TransformText();
             string sidebarsFilename = "sidebars.js";
 
             File.WriteAllText(sidebarsFilename, sidebarsText);
+
+            MessageBox.Show(string.Format(@"Sidebars file created."), "Docusaurus Documentation Project Outliner", MessageBoxButtons.OK);
+        }
+
+        private string SidebarJsonTopics(List<DocumentationTopic> topics)
+        {
+            JsonArray ja = new JsonArray();
+            foreach (var topic in topics)
+            {
+                string itemToAdd = (topic.Topics.Count == 0) ? Surround(TopicSlug(topic)) : MultiLevelTopic(topic);
+                ja.Add(itemToAdd);
+            }
+            return ja.ToString();
+        }
+
+        private string TopicSlug(DocumentationTopic topic)
+        {
+            return topic.Title.Trim().Replace(' ', '-').ToLower();
+        }
+
+        private string MultiLevelTopic(DocumentationTopic topic)
+        {
+            JsonObject js = new JsonObject();
+            js.Add(Surround("type"), Surround("category"));
+            js.Add(Surround("label"), Surround(topic.Title));
+            js.Add(Surround("items"), SidebarJsonTopics(topic, topic.Topics));
+            return js.ToString();
+        }
+
+        private string SidebarJsonTopics(DocumentationTopic topic, List<DocumentationTopic> topics)
+        {
+            var extraTopics = new List<DocumentationTopic>();
+            extraTopics.Add(new DocumentationTopic() { Title = topic.Title, AlternativeTitle = "Overview" });
+            extraTopics.AddRange(topics);
+
+            return SidebarJsonTopics(extraTopics);
+        }
+
+        private string Surround(string v)
+        {
+            return Surround("\"", v);
+        }
+
+        private string Surround(string encapsulator, string s)
+        {
+            return string.Format(@"{0}{1}{0}", encapsulator, s);
+        }
+    }
+
+    internal class ControlsToEnableList: List<object>
+    {
+        public ControlsToEnableList()
+        {
+        }
+
+        internal void SetControlsEnabled()
+        {
+            // throw new NotImplementedException();
+        }
+    }
+
+    internal class JsonArray
+    {
+        public List<string> Items { get; private set; }
+
+        public JsonArray()
+        {
+            Items = new List<string>();
+        }
+
+        internal void Add(string v)
+        {
+            Items.Add(v);
+        }
+
+        public override string ToString()
+        {
+            string[] arr = Items.ToArray();
+            return string.Format(@"[ {0} ]", string.Join(",", arr));
+        }
+    }
+
+    internal class JsonObject
+    {
+        public List<Tuple<string, string>> Items { get; private set; }
+
+        public JsonObject()
+        {
+            Items = new List<Tuple<string, string>>();
+        }
+
+        internal void Add(string s, string v)
+        {
+            Items.Add(new Tuple<string, string>(s, v));
+        }
+
+        public override string ToString()
+        {
+            string[] arr = Items.ToArray<Tuple<string, string>>().Select(p => string.Format(@"{0}:{1}", p.Item1, p.Item2)).ToArray();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("{ ");
+            sb.AppendFormat(@"{0}", string.Join(", ", arr));
+            sb.Append(" }");
+
+            return sb.ToString();
         }
     }
 
