@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DocusaurusDocOutlinerControlLibrary;
@@ -130,7 +131,7 @@ namespace DocusaurusDocOutliner
 
         private void GatherData()
         {
-
+            Project = ((ProjectTreeNode)treeView1.TopNode).RetrieveProject();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -323,8 +324,7 @@ namespace DocusaurusDocOutliner
         {
             if (result == DocusaurusDocOutlinerControlLibrary.FileOpenSaveResult.Success)
             {
-                FileName = weblidityFileOpenSave1.FileName;
-                weblidityFormCloser1.IsDirty = false;
+                FileName = weblidityFileOpenSave1.FileName;               
                 OnApplicationFileNameChanged(FileName);
             }
         }
@@ -338,8 +338,19 @@ namespace DocusaurusDocOutliner
         }
 
         private void weblidityFileOpenSave1_FileSave(object sender, FileOpenSaveEventArgs e)
-        {
+        {          
+            GatherData();
+            string basename = System.IO.Path.GetFileNameWithoutExtension(e.FileName);
+            string outputPath = System.IO.Path.Combine(basename + ".json");
+            File.WriteAllText(outputPath, JsonSerializer.Serialize(Project));
             e.Result = FileOpenSaveResult.Success;
+
+            weblidityFormCloser1.IsDirty = false;
+        }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            weblidityFileOpenSave1.Open();
         }
     }
 

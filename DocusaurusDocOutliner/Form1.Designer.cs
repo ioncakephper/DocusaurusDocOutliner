@@ -70,9 +70,23 @@
             this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.buildToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.newTopicToolStripDropDownButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.newTopicToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.newSiblingLastToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newSiblingAfterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newSiblingBeforeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTopicToolStripDropDownButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.addTopicToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.addSiblingLastToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSiblingAfterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSiblingBeforeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -109,20 +123,6 @@
             this.propertiesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.weblidityFormCloser1 = new DocusaurusDocOutlinerControlLibrary.WeblidityFormCloser(this.components);
             this.weblidityFileOpenSave1 = new DocusaurusDocOutlinerControlLibrary.WeblidityFileOpenSave(this.components);
-            this.newTopicToolStripDropDownButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.newTopicToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.newSiblingLastToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.newSiblingAfterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.newSiblingBeforeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addTopicToolStripDropDownButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.addTopicToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
-            this.addSiblingLastToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSiblingAfterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSiblingBeforeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -172,7 +172,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.newToolStripMenuItem.Text = "&New";
             // 
             // openToolStripMenuItem
@@ -195,14 +195,14 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -329,7 +329,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -371,7 +371,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -419,6 +419,7 @@
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
             // 
             // saveToolStripButton
             // 
@@ -476,20 +477,6 @@
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 27);
             // 
-            // helpToolStripButton
-            // 
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
-            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.helpToolStripButton.Text = "He&lp";
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 27);
-            // 
             // buildToolStripButton
             // 
             this.buildToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -499,6 +486,122 @@
             this.buildToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.buildToolStripButton.Text = "Build";
             this.buildToolStripButton.Click += new System.EventHandler(this.buildToolStripButton_Click);
+            // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(6, 27);
+            // 
+            // newTopicToolStripDropDownButton
+            // 
+            this.newTopicToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newTopicToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newTopicToolStripMenuItem2,
+            this.toolStripSeparator13,
+            this.newSiblingLastToolStripMenuItem1,
+            this.newSiblingAfterToolStripMenuItem1,
+            this.newSiblingBeforeToolStripMenuItem1});
+            this.newTopicToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("newTopicToolStripDropDownButton.Image")));
+            this.newTopicToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newTopicToolStripDropDownButton.Name = "newTopicToolStripDropDownButton";
+            this.newTopicToolStripDropDownButton.Size = new System.Drawing.Size(39, 24);
+            this.newTopicToolStripDropDownButton.Text = "New topic";
+            // 
+            // newTopicToolStripMenuItem2
+            // 
+            this.newTopicToolStripMenuItem2.Name = "newTopicToolStripMenuItem2";
+            this.newTopicToolStripMenuItem2.Size = new System.Drawing.Size(210, 26);
+            this.newTopicToolStripMenuItem2.Text = "New topic";
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(207, 6);
+            // 
+            // newSiblingLastToolStripMenuItem1
+            // 
+            this.newSiblingLastToolStripMenuItem1.Name = "newSiblingLastToolStripMenuItem1";
+            this.newSiblingLastToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.newSiblingLastToolStripMenuItem1.Text = "New sibling last";
+            // 
+            // newSiblingAfterToolStripMenuItem1
+            // 
+            this.newSiblingAfterToolStripMenuItem1.Name = "newSiblingAfterToolStripMenuItem1";
+            this.newSiblingAfterToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.newSiblingAfterToolStripMenuItem1.Text = "New sibling after";
+            // 
+            // newSiblingBeforeToolStripMenuItem1
+            // 
+            this.newSiblingBeforeToolStripMenuItem1.Name = "newSiblingBeforeToolStripMenuItem1";
+            this.newSiblingBeforeToolStripMenuItem1.Size = new System.Drawing.Size(210, 26);
+            this.newSiblingBeforeToolStripMenuItem1.Text = "New sibling before";
+            // 
+            // addTopicToolStripDropDownButton
+            // 
+            this.addTopicToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addTopicToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTopicToolStripMenuItem2,
+            this.toolStripSeparator14,
+            this.addSiblingLastToolStripMenuItem1,
+            this.addSiblingAfterToolStripMenuItem1,
+            this.addSiblingBeforeToolStripMenuItem1});
+            this.addTopicToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("addTopicToolStripDropDownButton.Image")));
+            this.addTopicToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addTopicToolStripDropDownButton.Name = "addTopicToolStripDropDownButton";
+            this.addTopicToolStripDropDownButton.Size = new System.Drawing.Size(39, 24);
+            this.addTopicToolStripDropDownButton.Text = "Add topic";
+            // 
+            // addTopicToolStripMenuItem2
+            // 
+            this.addTopicToolStripMenuItem2.Name = "addTopicToolStripMenuItem2";
+            this.addTopicToolStripMenuItem2.Size = new System.Drawing.Size(208, 26);
+            this.addTopicToolStripMenuItem2.Text = "Add topic";
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(205, 6);
+            // 
+            // addSiblingLastToolStripMenuItem1
+            // 
+            this.addSiblingLastToolStripMenuItem1.Name = "addSiblingLastToolStripMenuItem1";
+            this.addSiblingLastToolStripMenuItem1.Size = new System.Drawing.Size(208, 26);
+            this.addSiblingLastToolStripMenuItem1.Text = "Add sibling last";
+            // 
+            // addSiblingAfterToolStripMenuItem1
+            // 
+            this.addSiblingAfterToolStripMenuItem1.Name = "addSiblingAfterToolStripMenuItem1";
+            this.addSiblingAfterToolStripMenuItem1.Size = new System.Drawing.Size(208, 26);
+            this.addSiblingAfterToolStripMenuItem1.Text = "Add sibling after";
+            // 
+            // addSiblingBeforeToolStripMenuItem1
+            // 
+            this.addSiblingBeforeToolStripMenuItem1.Name = "addSiblingBeforeToolStripMenuItem1";
+            this.addSiblingBeforeToolStripMenuItem1.Size = new System.Drawing.Size(208, 26);
+            this.addSiblingBeforeToolStripMenuItem1.Text = "Add sibling before";
+            // 
+            // removeToolStripButton
+            // 
+            this.removeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.removeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("removeToolStripButton.Image")));
+            this.removeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.removeToolStripButton.Name = "removeToolStripButton";
+            this.removeToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.removeToolStripButton.Text = "Remove";
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 27);
+            // 
+            // helpToolStripButton
+            // 
+            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
+            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.helpToolStripButton.Name = "helpToolStripButton";
+            this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.helpToolStripButton.Text = "He&lp";
             // 
             // statusStrip1
             // 
@@ -769,108 +872,6 @@
             // 
             this.weblidityFileOpenSave1.FileName = null;
             this.weblidityFileOpenSave1.FileSave += new System.EventHandler<DocusaurusDocOutlinerControlLibrary.FileOpenSaveEventArgs>(this.weblidityFileOpenSave1_FileSave);
-            // 
-            // newTopicToolStripDropDownButton
-            // 
-            this.newTopicToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.newTopicToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newTopicToolStripMenuItem2,
-            this.toolStripSeparator13,
-            this.newSiblingLastToolStripMenuItem1,
-            this.newSiblingAfterToolStripMenuItem1,
-            this.newSiblingBeforeToolStripMenuItem1});
-            this.newTopicToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("newTopicToolStripDropDownButton.Image")));
-            this.newTopicToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newTopicToolStripDropDownButton.Name = "newTopicToolStripDropDownButton";
-            this.newTopicToolStripDropDownButton.Size = new System.Drawing.Size(39, 24);
-            this.newTopicToolStripDropDownButton.Text = "New topic";
-            // 
-            // newTopicToolStripMenuItem2
-            // 
-            this.newTopicToolStripMenuItem2.Name = "newTopicToolStripMenuItem2";
-            this.newTopicToolStripMenuItem2.Size = new System.Drawing.Size(216, 26);
-            this.newTopicToolStripMenuItem2.Text = "New topic";
-            // 
-            // toolStripSeparator13
-            // 
-            this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(213, 6);
-            // 
-            // newSiblingLastToolStripMenuItem1
-            // 
-            this.newSiblingLastToolStripMenuItem1.Name = "newSiblingLastToolStripMenuItem1";
-            this.newSiblingLastToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
-            this.newSiblingLastToolStripMenuItem1.Text = "New sibling last";
-            // 
-            // newSiblingAfterToolStripMenuItem1
-            // 
-            this.newSiblingAfterToolStripMenuItem1.Name = "newSiblingAfterToolStripMenuItem1";
-            this.newSiblingAfterToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
-            this.newSiblingAfterToolStripMenuItem1.Text = "New sibling after";
-            // 
-            // newSiblingBeforeToolStripMenuItem1
-            // 
-            this.newSiblingBeforeToolStripMenuItem1.Name = "newSiblingBeforeToolStripMenuItem1";
-            this.newSiblingBeforeToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
-            this.newSiblingBeforeToolStripMenuItem1.Text = "New sibling before";
-            // 
-            // addTopicToolStripDropDownButton
-            // 
-            this.addTopicToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addTopicToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addTopicToolStripMenuItem2,
-            this.toolStripSeparator14,
-            this.addSiblingLastToolStripMenuItem1,
-            this.addSiblingAfterToolStripMenuItem1,
-            this.addSiblingBeforeToolStripMenuItem1});
-            this.addTopicToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("addTopicToolStripDropDownButton.Image")));
-            this.addTopicToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addTopicToolStripDropDownButton.Name = "addTopicToolStripDropDownButton";
-            this.addTopicToolStripDropDownButton.Size = new System.Drawing.Size(39, 24);
-            this.addTopicToolStripDropDownButton.Text = "Add topic";
-            // 
-            // addTopicToolStripMenuItem2
-            // 
-            this.addTopicToolStripMenuItem2.Name = "addTopicToolStripMenuItem2";
-            this.addTopicToolStripMenuItem2.Size = new System.Drawing.Size(216, 26);
-            this.addTopicToolStripMenuItem2.Text = "Add topic";
-            // 
-            // toolStripSeparator14
-            // 
-            this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(213, 6);
-            // 
-            // addSiblingLastToolStripMenuItem1
-            // 
-            this.addSiblingLastToolStripMenuItem1.Name = "addSiblingLastToolStripMenuItem1";
-            this.addSiblingLastToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
-            this.addSiblingLastToolStripMenuItem1.Text = "Add sibling last";
-            // 
-            // addSiblingAfterToolStripMenuItem1
-            // 
-            this.addSiblingAfterToolStripMenuItem1.Name = "addSiblingAfterToolStripMenuItem1";
-            this.addSiblingAfterToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
-            this.addSiblingAfterToolStripMenuItem1.Text = "Add sibling after";
-            // 
-            // addSiblingBeforeToolStripMenuItem1
-            // 
-            this.addSiblingBeforeToolStripMenuItem1.Name = "addSiblingBeforeToolStripMenuItem1";
-            this.addSiblingBeforeToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
-            this.addSiblingBeforeToolStripMenuItem1.Text = "Add sibling before";
-            // 
-            // removeToolStripButton
-            // 
-            this.removeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.removeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("removeToolStripButton.Image")));
-            this.removeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.removeToolStripButton.Name = "removeToolStripButton";
-            this.removeToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.removeToolStripButton.Text = "Remove";
-            // 
-            // toolStripSeparator15
-            // 
-            this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(6, 27);
             // 
             // Form1
             // 
